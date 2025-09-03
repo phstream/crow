@@ -18,7 +18,7 @@
  *            UNIX domain sockets (Linux/macOS) or Named Pipes (Windows). 
  *            Can be statically linked or compiled as a shared library (.so/.dll).
  *
- * @pre       -
+ * @pre       common/lib_defs.h
  * @bug       -
  * @warning   -
  * @todo      Windows currently supports only one PCOM server instance at a time.
@@ -29,11 +29,7 @@
 
 #include <stddef.h>  // for size_t
 
-#if defined(_WIN32) || defined(_WIN64)
-#define PCOM_API __declspec(dllexport)
-#else
-#define PCOM_API __attribute__((visibility("default")))
-#endif
+#include "../common/lib_defs.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -69,7 +65,7 @@ pcom_version(void);
  * @details    This function retrieves the error message corresponding to the
  *             given error code.
  */
-PCOM_API int
+LIB_EXPORT int
 pcom_error_text(int error_code, char* p_text_buf, size_t buf_len);
 
 /* ---- Server functions -------------------------------------------------- */
@@ -80,7 +76,7 @@ pcom_error_text(int error_code, char* p_text_buf, size_t buf_len);
  * @details    This function initializes a server-side communication endpoint.
  *             On Windows, it prepares internal state for named pipe usage.
  */
-PCOM_API int
+LIB_EXPORT int
 pcom_server_open(const char* name);
 
 /**
@@ -91,7 +87,7 @@ pcom_server_open(const char* name);
  *             The returned handle is a single active client session
  *             and must be closed with pcom_client_close().
  */
-PCOM_API int 
+LIB_EXPORT int 
 pcom_server_accept(int server_handle);
 
 /**
@@ -100,7 +96,7 @@ pcom_server_accept(int server_handle);
  * @param info           Pointer to a pcom_user_info_t struct that will be filled.
  * @return 0 on success, negative error code on failure.
  */
-PCOM_API int
+LIB_EXPORT int
 pcom_server_check_user(int client_handle, pcom_user_info_t *info);
 
 /**
@@ -111,7 +107,7 @@ pcom_server_check_user(int client_handle, pcom_user_info_t *info);
  * @return     Number of bytes written, negative error code on failure.
  * @details    This function sends data to the client.
  */
-PCOM_API int
+LIB_EXPORT int
 pcom_server_send(int client_handle, const void* buf, size_t len); 
 
 /**
@@ -122,7 +118,7 @@ pcom_server_send(int client_handle, const void* buf, size_t len);
  * @return     Number of bytes read, negative error code on failure.
  * @details    This function receives data from the client.
  */
-PCOM_API int 
+LIB_EXPORT int 
 pcom_server_recv(int client_handle, void* buf, size_t len);
 
 /**
@@ -132,7 +128,7 @@ pcom_server_recv(int client_handle, void* buf, size_t len);
  *             On Windows, this function clears internal static state 
  *             and disables further use until pcom_server_open() is called again.
  */
-PCOM_API void 
+LIB_EXPORT void 
 pcom_server_close(int server_handle);
 
 /* ---- Client functions -------------------------------------------------- */
@@ -143,7 +139,7 @@ pcom_server_close(int server_handle);
  * @return     Client handle or -1 on error
  * @details    This function opens a client for communication.
  */
-PCOM_API int
+LIB_EXPORT int
 pcom_client_open(const char* name);
 
 /**
@@ -154,7 +150,7 @@ pcom_client_open(const char* name);
  * @return     Number of bytes written, negative error code on failure.
  * @details    This function sends data to the server.
  */
-PCOM_API int
+LIB_EXPORT int
 pcom_client_send(int client_handle, const void* buf, size_t len);
 
 /**
@@ -165,7 +161,7 @@ pcom_client_send(int client_handle, const void* buf, size_t len);
  * @return     Number of bytes read, negative error code on failure.
  * @details    This function receives data from the server.
  */
-PCOM_API int 
+LIB_EXPORT int 
 pcom_client_recv(int client_handle, void* buf, size_t len);
 
 /**
@@ -173,7 +169,7 @@ pcom_client_recv(int client_handle, void* buf, size_t len);
  * @param      client_handle  The client handle
  * @details    This function closes an active client connection.
  */
-PCOM_API void
+LIB_EXPORT void
 pcom_client_close(int client_handle);
 
 #ifdef __cplusplus
