@@ -6,8 +6,8 @@
  *   || CROW - Communicatio Retis Omni Via
  * 
  * @file      crc32.c
- * @author    Peter Hillerström <prohstream@gmail.com>
- * @copyright 2024, Peter Hillerström
+ * @author    phstream
+ * @copyright 2024, phstream
  * @license   MIT
  * @date      12 Jul 2024
  ****************************************************************************/

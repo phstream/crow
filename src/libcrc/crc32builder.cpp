@@ -1,4 +1,10 @@
 /*****************************************************************************
+ * \\  __   
+ * \ \(o >  
+ * \/ ) |   
+ *  // /    
+ *   || CROW - Communicatio Retis Omni Via
+ * 
  * @file      crc32builder.cpp
  * @author    phstream
  * @copyright 2025, phstream
