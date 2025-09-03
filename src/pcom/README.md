@@ -34,6 +34,7 @@ This allows servers to implement **group-based access filters**.
 - `Makefile` – Targets to build the library and test tools
 - `pcom.h` – Public C header
 - `pcom.c` – Implementation
+- `pcom.py`- Python libpcom wrapper
 - `test_client.c`, `test_server.c` – Example programs
 - `LICENSE` – MIT License
 
