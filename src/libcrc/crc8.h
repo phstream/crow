@@ -13,7 +13,7 @@
  ****************************************************************************/
 /** @defgroup  CRC CRC Calculation
  * @brief     Cyclic Redundancy Checksum 8bit calculation
- * @details
+ * @details   Example CRC versions can be found at https://www.crccalc.com/
  *
  * @pre       common/lib_defs.h
  * @bug
@@ -78,7 +78,7 @@ crc8_update(const uint8_t* p_data, size_t length, uint8_t crc_in);
  * @return CRC8 sum.
  */
 LIB_EXPORT uint8_t 
-crc8(const uint8_t* p_data, size_t length);
+crc8_calc(const uint8_t* p_data, size_t length);
 
 #ifdef __cplusplus
 }   // extern "C"

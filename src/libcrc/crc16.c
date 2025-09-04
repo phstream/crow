@@ -15,9 +15,9 @@
 #include "crc16.h" 
 
 /* Version constants */
-#define CRC16_VERSION_MAJOR (01)   /* Step if interface or function changes */
-#define CRC16_VERSION_MINOR (00)   /* Step if bug fix or refactoring */
-#define CRC16_VERSION_BUILD (0000) /* Step for minor fixes */
+#define CRC16_VERSION_MAJOR (1)   /* Step if interface or function changes */
+#define CRC16_VERSION_MINOR (1)   /* Step if bug fix or refactoring */
+#define CRC16_VERSION_PATCH (0) /* Step for minor fixes */
 
 /* CRC16 algorithm selection defines */
 #define CRC16_POLY   (0x1021u)
@@ -49,9 +49,7 @@ static inline uint16_t reflect16(uint16_t w) {
 int
 crc16_version() 
 {
-    return CRC16_VERSION_MAJOR * 1000000
-         + CRC16_VERSION_MINOR * 10000
-         + CRC16_VERSION_BUILD;
+    return (CRC16_VERSION_MAJOR << 16) | (CRC16_VERSION_MINOR << 8) | CRC16_VERSION_PATCH;
 }
 
 uint16_t 
@@ -84,7 +82,7 @@ crc16_update(const uint8_t* p_data, size_t length, uint16_t crc_in)
 #endif
 }
 
-uint8_t 
+uint16_t 
 crc16_calc(const uint8_t* p_data, size_t length)
 {
     return crc16_finalize(crc16_update(p_data, length, crc16_initialize()));

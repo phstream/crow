@@ -42,8 +42,8 @@ class Crc32:
             raise ImportError(f"Function get_version not found in {self.libname}: {e}")
             
         # Determine if correct version 1.NN.NNNN
-        self.verstr = f"{self.verval // 1000000}.{(self.verval // 10000) % 100}.{self.verval% 10000}"
-        if self.verval >= 2000000:
+        self.verstr = f"{self.verval >> 16}.{(self.verval >> 8) & 0xff}.{self.verval & 0xff}"
+        if self.verval >= 0x20000:
             raise RuntimeError(f"Incompatible {self.libname} version: {self.verstr}, expected < 2.0.0")
         
         try: # Bind rest of library function

@@ -15,9 +15,9 @@
 #include "crc32.h" 
 
 /* Version constants */
-#define CRC32_VERSION_MAJOR (01)   /* Step if interface or function changes */
-#define CRC32_VERSION_MINOR (00)   /* Step if bug fix or refactoring */
-#define CRC32_VERSION_BUILD (0000) /* Step for minor fixes */
+#define CRC32_VERSION_MAJOR (1)   /* Step if interface or function changes */
+#define CRC32_VERSION_MINOR (1)   /* Step if bug fix or refactoring */
+#define CRC32_VERSION_PATCH (0)   /* Step for minor fixes */
 
 /* CRC32 algorithm selection defines */
 #define CRC32_POLY    (0x04C11DB7ul)
@@ -43,9 +43,7 @@ static inline uint32_t reflect32(uint32_t w) {
 int
 crc32_version() 
 {
-    return CRC32_VERSION_MAJOR * 1000000
-         + CRC32_VERSION_MINOR * 10000
-         + CRC32_VERSION_BUILD;
+    return (CRC32_VERSION_MAJOR << 16) | (CRC32_VERSION_MINOR << 8) | CRC32_VERSION_PATCH;
 }
 
 uint32_t 

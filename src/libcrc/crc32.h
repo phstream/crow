@@ -13,7 +13,7 @@
  ****************************************************************************/
 /** @defgroup  CRC CRC Calculation
  * @brief     Cyclic Redundancy Checksum 32bit calculation
- * @details
+ * @details   Example CRC versions can be found at https://www.crccalc.com/
  *
  * @pre       common/lib_defs.h
  * @bug       
@@ -23,7 +23,7 @@
 #ifndef CRC32_H_ /* Guard against multiple inclusion */
 #define	CRC32_H_
 
-#include "lib_defs.h"
+#include "../common/lib_defs.h"
 
 #ifdef __cplusplus    /* C++ compability */
 #  include <cstdint>

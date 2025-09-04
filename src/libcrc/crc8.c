@@ -15,16 +15,14 @@
 #include "crc8.h" 
 
 /* Version constants */
-#define CRC8_VERSION_MAJOR (01)   /* Step if interface or function changes */
-#define CRC8_VERSION_MINOR (00)   /* Step if bug fix or refactoring */
-#define CRC8_VERSION_BUILD (0000) /* Step for minor fixes */
+#define CRC8_VERSION_MAJOR (1)   /* Step if interface or function changes */
+#define CRC8_VERSION_MINOR (1)   /* Step if bug fix or refactoring */
+#define CRC8_VERSION_PATCH (0)   /* Step for minor fixes */
 
 int
 crc8_version() 
 {
-    return CRC8_VERSION_MAJOR * 1000000
-         + CRC8_VERSION_MINOR * 10000
-         + CRC8_VERSION_BUILD;
+    return (CRC8_VERSION_MAJOR << 16) | (CRC8_VERSION_MINOR << 8) | CRC8_VERSION_PATCH;
 }
 
 /* Dummy implentaion keeping api same. */
