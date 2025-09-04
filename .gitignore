@@ -1,3 +1,7 @@
+# CROW stuff
+build/
+__pycache__/
+
 # Prerequisites
 *.d
 
