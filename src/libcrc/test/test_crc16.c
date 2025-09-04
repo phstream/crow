@@ -5,8 +5,8 @@
 
 int main(void) {    
     int version = crc16_version();
-    assert(version >= 1000000);
-    printf("✅ Test passed: Version = %i\n", version);
+    assert(version >= 0x10000);
+    printf("✅ Test passed: Version = %x\n", version);
     
     uint16_t result = crc16_initialize();
     result = crc16_finalize(result);
@@ -32,12 +32,12 @@ int main(void) {
     result = crc16_update((const unsigned char*) data7, strlen(data7), result);
     result = crc16_update((const unsigned char*) data8, strlen(data8), result);
     result = crc16_finalize(result);
-    assert(result == 0x0U);
-    printf("✅ Test passed: Updated CRC16 = 0x%08X\n", result);
+    assert(result == 0x024C);
+    printf("✅ Test passed: Updated CRC16 = 0x%04X\n", result);
 
     const char* input = "123456789";
-    result = crc32_calc((const unsigned char*)input, strlen(input));
-    assert(result == 0x0UL);
-    printf("✅ Test passed: CRC16(\"%s\") = 0x%08X\n", input, result);
+    result = crc16_calc((const unsigned char*)input, strlen(input));
+    assert(result == 0x29B1);
+    printf("✅ Test passed: CRC16(\"%s\") = 0x%04X\n", input, result);
     return 0;
 }

@@ -14,7 +14,7 @@ class TestCRC32(unittest.TestCase):
     def test_version(self):
         version = self.crc.version()
         self.assertIsInstance(version, int)
-        version_str = f"{version // 1000000}.{(version // 10000) % 100}.{version % 10000}"
+        version_str = f"{version >> 16}.{(version >> 8) & 0xff}.{version & 0xff}"
         self.assertEqual(self.crc.version_str(), version_str)
 
     def test_initialize_finalize(self):

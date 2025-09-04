@@ -5,8 +5,8 @@
 
 int main(void) {    
     int version = crc32_version();
-    assert(version >= 1000000);
-    printf("✅ Test passed: Version = %i\n", version);
+    assert(version >= 0x10000);
+    printf("✅ Test passed: Version = %x\n", version);
     
     uint32_t result = crc32_initialize();
     result = crc32_finalize(result);
